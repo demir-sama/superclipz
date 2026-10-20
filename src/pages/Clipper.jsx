@@ -98,8 +98,8 @@ export default function Clipper() {
               <div className="flex justify-center bg-slate-900 rounded-xl p-3">
                 <div className={`relative overflow-hidden rounded-lg bg-black ${src.isAudio ? 'w-full' : ASPECTS[aspect] + ' w-full'}`} style={aspect === '9:16' && !src.isAudio ? { width: 'auto', height: '70vh' } : aspect === '1:1' && !src.isAudio ? { maxWidth: '70vh' } : {}}>
                   {src.isAudio
-                    ? <audio ref={media} src={src.url} controls className="w-full" onLoadedMetadata={onMeta} onTimeUpdate={onTime} crossOrigin="anonymous" />
-                    : <video ref={media} src={src.url} controls playsInline className="absolute inset-0 h-full w-full object-cover" onLoadedMetadata={onMeta} onTimeUpdate={onTime} crossOrigin="anonymous" />}
+                    ? <audio ref={media} src={src.url} controls className="w-full" onLoadedMetadata={onMeta} onTimeUpdate={onTime} />
+                    : <video ref={media} src={src.url} controls playsInline className="absolute inset-0 h-full w-full object-cover" onLoadedMetadata={onMeta} onTimeUpdate={onTime} />}
                   {!src.isAudio && caption && <p className="absolute bottom-14 inset-x-3 text-center text-white font-bold text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,.9)] pointer-events-none">{caption}</p>}
                   {!src.isAudio && watermark && <img src="/brand/logo-dark.png" alt="" className="absolute top-3 right-3 h-6 opacity-80 pointer-events-none" />}
                 </div>

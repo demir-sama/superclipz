@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Timeline from '../components/Timeline'
 import Transcript from '../components/Transcript'
 import Captions from '../components/Captions'
-import { cutClip, serverConfigured } from '../lib/ffmpeg'
+import { cutClip, serverConfigured, API as API_BASE } from '../lib/ffmpeg'
 import { saveClip } from '../lib/clips'
 import { useAuth } from '../lib/auth'
 import { fmt } from '../lib/share'
@@ -36,7 +36,7 @@ export default function Clipper() {
   const loadUrl = (u) => {
     u = u.trim(); if (!u) return
     if (isPlatform(u) && !serverConfigured) { setStatus('YouTube/Twitch links need the SuperClipz server with yt-dlp (set VITE_API_URL). Use a direct media URL or upload a file.'); return }
-    const playable = isPlatform(u) ? `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/proxy?url=${encodeURIComponent(u)}` : u
+    const playable = isPlatform(u) ? `${API_BASE}/proxy?url=${encodeURIComponent(u)}` : u
     setSrc({ url: playable, original: u, isAudio: /\.(mp3|wav|m4a|ogg|aac)(\?|$)/i.test(u), name: u.split('/').pop().split('?')[0] })
     setSegments([]); setStatus('')
   }

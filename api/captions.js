@@ -12,7 +12,7 @@ const templates = (tone, ctx = '') => {
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
   const { tone = 'Hype', context = '' } = req.body || {}
-  const key = process.env.OPENAI_API_KEY
+  const key = (process.env.OPENAI_API_KEY || '').startsWith('REPLACE') ? '' : process.env.OPENAI_API_KEY
   if (!key) return res.json({ source: 'template', suggestions: templates(tone, context) })
   try {
     const r = await fetch(`${AI_BASE()}/chat/completions`, {

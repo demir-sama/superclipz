@@ -1,5 +1,6 @@
 // Cutting: server (/server FFmpeg service via VITE_API_URL) first, ffmpeg.wasm in-browser fallback.
-const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+import { env } from './env'
+export const API = env('VITE_API_URL').replace(/\/$/, '')
 export const serverConfigured = Boolean(API)
 const DIMS = { '9:16': [720, 1280], '1:1': [1080, 1080], '16:9': [1280, 720] }
 

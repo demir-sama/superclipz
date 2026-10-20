@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   const raw = await readRaw(req)
   const ct = req.headers['content-type'] || ''
   let json = {}; if (ct.includes('json')) { try { json = JSON.parse(raw.toString() || '{}') } catch {} }
-  const key = process.env.OPENAI_API_KEY
+  const key = (process.env.OPENAI_API_KEY || '').startsWith('REPLACE') ? '' : process.env.OPENAI_API_KEY
   if (!key) return res.json({ mock: true, segments: mockSegments(json.duration) })
   try {
     let bytes = raw, type = ct, name = decodeURIComponent(req.headers['x-filename'] || 'audio.mp4')

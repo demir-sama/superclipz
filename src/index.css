@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 font-semibold transition focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-brand/50 disabled:opacity-40 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-purple-brand text-white hover:brightness-110; }
+  .btn-cyan { @apply btn bg-cyan-brand text-slate-900 hover:brightness-105; }
+  .btn-ghost { @apply btn border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800; }
+  .card { @apply rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm; }
+  .input { @apply w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-brand; }
+  .label { @apply text-sm font-semibold mb-1 block; }
+}
+.range-thumb { -webkit-appearance:none; appearance:none; pointer-events:none; background:transparent; }
+.range-thumb::-webkit-slider-thumb { pointer-events:auto; -webkit-appearance:none; width:18px; height:34px; border-radius:6px; background:#8A2BE2; border:2px solid #fff; cursor:ew-resize; }
+.range-thumb::-moz-range-thumb { pointer-events:auto; width:18px; height:34px; border-radius:6px; background:#8A2BE2; border:2px solid #fff; cursor:ew-resize; }
